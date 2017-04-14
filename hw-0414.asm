@@ -1,33 +1,25 @@
 INCLUDE Irvine32.inc
 
-.386
-
-.model flat,stdcall
-
-.stack 4096
-ExitProcess proto,dwExitCode:dword
-
 .data
-;t BYTE 10
 input byte 100 dup(0)
 key byte "ABXmv#7", 0
-.code
 
+.code
 main proc
-	mov  ecx,32     
-	mov  edx,offset input     
+	mov  ecx, 100
+	mov  edx, offset input
 	call ReadString
-	mov edx,offset input
-	mov ebx,offset key
+	mov edx, offset input
+	mov ebx, offset key
 L1:
-	mov al,[edx]
-	cmp al,0
+	mov al, [edx]
+	cmp al, 0
 	jz F2 
-	mov ah,[ebx]
-	cmp ah,0
+	mov ah, [ebx]
+	cmp ah, 0
 	jnz F1
-	mov ebx,offset key
-	mov ah,[ebx]
+	mov ebx, offset key
+	mov ah, [ebx]
 F1:
 	xor al, ah
 	mov [edx], al
@@ -35,7 +27,7 @@ F1:
 	inc ebx 
 	jmp L1
 F2:
-	mov  edx,offset input   
+	mov  edx, offset input   
 	call writestring
 
 	exit
