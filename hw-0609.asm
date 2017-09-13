@@ -6,8 +6,6 @@ str1 BYTE "Hello World", 0
 str2 BYTE "Don't repeat yourself", 0
 Encrypt proto, s:DWORD, sl:DWORD, k:DWORD, kl:DWORD
 
-$$DmpUint8 PROTO,p:DWORD,n:DWORD
-
 .code
 main proc
 	invoke Encrypt, offset str1, lengthof str1, offset key, lengthof key
